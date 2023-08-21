@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { AppService } from './app.service';
-import { story } from './story';
+import { news_story } from './model/news_story';
 
 @Controller()
 export class AppController {
@@ -17,7 +17,7 @@ export class AppController {
   }
 
   @Post("/new_story")
-  submitStory(@Body() body: story): string {
+  submitStory(@Body() body: news_story): string {
     console.log(body)
     return "<h1>" + body["title"] + "</h1>"
   }
