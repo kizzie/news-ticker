@@ -5,4 +5,9 @@ build:
 run:
 	yarn start
 
-.PHONY: run
+lint: 
+	yarn lint
+test:
+	yarn test
+
+.PHONY: build run test lint

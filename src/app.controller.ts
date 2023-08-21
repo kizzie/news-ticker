@@ -1,6 +1,7 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { AppService } from './app.service';
 import { news_story } from './model/news_story';
+import { version_response } from './model/version_response';
 
 @Controller()
 export class AppController {
@@ -11,14 +12,16 @@ export class AppController {
     return this.appService.getHello();
   }
 
-  @Get("/version")
-  getVersion(): string {
-    return this.appService.getVersion();
+  @Get('/version')
+  getVersion(): version_response {
+    return {
+      version: this.appService.getVersion(),
+    };
   }
 
-  @Post("/new_story")
+  @Post('/new_story')
   submitStory(@Body() body: news_story): string {
-    console.log(body)
-    return "<h1>" + body["title"] + "</h1>"
+    console.log(body);
+    return '<h1>' + body['title'] + '</h1>';
   }
 }

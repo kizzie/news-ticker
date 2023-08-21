@@ -19,4 +19,13 @@ describe('AppController', () => {
       expect(appController.getHello()).toBe('Hello World!');
     });
   });
+
+  describe('/version', () => {
+    it('should return the correct version', () => {
+      const result = {
+        version: process.env.npm_package_version,
+      };
+      expect(appController.getVersion()).toStrictEqual(result);
+    });
+  });
 });
