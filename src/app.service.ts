@@ -7,7 +7,7 @@ export class AppService {
   }
 
   getVersion(): string {
-    return "1.0.0"
+    return process.env.npm_package_version
   }
 }
 
