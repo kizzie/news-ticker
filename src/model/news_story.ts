@@ -1,5 +1,6 @@
 export class news_story {
-  title: string;
-  text: string;
-  author: string;
+    id: string;
+    title: string;
+    text: string;
+    author: string;
 }

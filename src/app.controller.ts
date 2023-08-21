@@ -24,4 +24,9 @@ export class AppController {
     console.log(body);
     return '<h1>' + body['title'] + '</h1>';
   }
+
+  @Get('/stories')
+  allStories(): news_story[] {
+    return [...this.appService.getAllStories().values()]
+  }
 }
