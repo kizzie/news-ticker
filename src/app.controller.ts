@@ -21,8 +21,7 @@ export class AppController {
 
   @Post('/new_story')
   submitStory(@Body() body: news_story): string {
-    console.log(body);
-    return '<h1>' + body['title'] + '</h1>';
+    return this.appService.addNewStory(body)
   }
 
   @Get('/stories')

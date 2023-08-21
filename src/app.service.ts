@@ -3,8 +3,7 @@ import { news_story } from './model/news_story';
 
 @Injectable()
 export class AppService {
-
-  story_list: Map<string, news_story>
+  story_list: news_story[] = []
 
   getHello(): string {
     return 'Hello World!';
@@ -17,24 +16,19 @@ export class AppService {
   // should put this in a service / controller for handling 
   // the story list object rather than all in one file
   addNewStory(story: news_story): string {
-    this.story_list[story.title] = story
-    return "Stored in story list, new length: " + this.story_list.keys.length
+    // because in typescript pushing to an array returns the length for us
+    return this.story_list.push(story).toString()
   }
 
-  getAllStories(): Map<string, news_story> {
+  getAllStories(): news_story[] {
     return this.story_list
   }
 
-  getStoryByTitle(title: string): news_story {
-    for (var s of this.story_list.values()) {
-      console.log(s)
-      if (s[title] == title) {
-        return s
-      }
-    }
+  getStoryByTitle(title: string): news_story[] {
+    return this.story_list.filter(story => story.title == title)
   }
 
-  getStoryByID(id: string): news_story {
-    return this.story_list[id]
+  getStoryByID(id: string): news_story[] {
+    return this.story_list.filter(story => story.id == id)
   }
 }
